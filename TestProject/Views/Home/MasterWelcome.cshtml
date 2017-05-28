@@ -1,0 +1,34 @@
+﻿@model IEnumerable<TestProject.Models.UserSession>
+
+@{
+    ViewBag.Title = "MasterWelcome";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Master Welcome page</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>       
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.ActionLink("Terminate","Terminate","Account", new { id = item.UserId}, null)
+        </td>
+        
+    </tr>
+}
+
+</table>
+@section Scripts{
+    <script src="~/Scripts/userPage.js"></script>
+    }
