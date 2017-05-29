@@ -18,7 +18,6 @@ namespace TestProject.Controllers
             RegisterSession(Session.SessionID);  
             return View();
         }
-        [Authorize(Roles = "MasterAdmin")]
         public ActionResult MasterWelcome()
         {
             RegisterSession(Session.SessionID);

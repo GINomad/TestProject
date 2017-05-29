@@ -79,8 +79,6 @@ namespace TestProject.Controllers
                 return View(model);
             }
 
-            // This doesn't count login failures towards account lockout
-            // To enable password failures to trigger account lockout, change to shouldLockout: true
             var user = ActiveUser.ActiveUsers.FirstOrDefault(u => u.UserEmail == model.Email);
             SignInStatus result;
                       
@@ -433,7 +431,7 @@ namespace TestProject.Controllers
         [HttpPost]       
         public ActionResult LogOff()
         {
-            var user = ActiveUser.UserSessions.FirstOrDefault(x => x.SessionId == Session.SessionID);
+            var user = ActiveUser.UserSessions.FirstOrDefault(x => x.UserId == User.Identity.GetUserId());
             if(user != null)
             {
                 ActiveUser.UserSessions.Remove(user);
